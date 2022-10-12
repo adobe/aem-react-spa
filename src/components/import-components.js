@@ -1,3 +1,5 @@
 import './Text/Text'
 import './Page/Page'
 import './ExperienceFragment/ExperienceFragment'
+import './Container/Container'
+import './Image/Image'

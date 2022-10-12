@@ -1,7 +1,7 @@
 import React from "react";
 import { EditableComponent, MapTo } from "@adobe/aem-react-editable-components";
 
-require("./Image.scss");
+require("./Image.css");
 
 export const ImageEditConfig = {
     emptyLabel: "Image",
@@ -39,5 +39,8 @@ const EditableImage = (props) => {
         </EditableComponent>
     );
 };
+
+MapTo("foundation/components/image")(EditableImage)
+MapTo("wcm/foundation/components/image")(EditableImage)
 
 export default MapTo("wknd-spa-react/components/image")(EditableImage);
