@@ -14,37 +14,52 @@
  ~ limitations under the License.
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-import sanitizeHtml from 'sanitize-html';
-import sanitizeWhiteList from '../sanitize-html.whitelist';
+import { EditableComponent, MapTo } from "@adobe/aem-react-editable-components";
+import DOMPurify from "dompurify";
+import React from "react";
+import extractModelId from "../../utils/extract-model-id";
 
-import React, { Component } from 'react';
-import extractModelId from '../../utils/extract-model-id';
-
-require('./Text.css');
+require("./Text.css");
 
 /**
- * Text React component
+ * Default Edit configuration for the Text component that interact with the Core Text component and sub-types
+ *
+ * @type EditConfig
  */
-class Text extends Component {
-  get richTextContent() {
+const TextEditConfig = {
+  emptyLabel: "Text",
+
+  isEmpty: function (props) {
+    return !props || !props.text || props.text.trim().length < 1;
+  },
+};
+
+const Text = (props) => {
+  const richTextContent = () => {
     return (
-      <div
-        id={extractModelId(this.props.cqPath)}
-        data-rte-editelement
-        dangerouslySetInnerHTML={{
-          __html: sanitizeHtml(this.props.text, sanitizeWhiteList)
-        }}
-      />
+        <div
+            id={extractModelId(props.cqPath)}
+            data-rte-editelement
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(props.text),
+            }}
+        />
     );
-  }
+  };
 
-  get textContent() {
-    return <div>{this.props.text}</div>;
-  }
+  const textContent = () => {
+    return <div>{props.text}</div>;
+  };
 
-  render() {
-    return this.props.richText ? this.richTextContent : this.textContent;
-  }
-}
+  return props.richText ? richTextContent() : textContent();
+};
 
-export default Text;
+const EditableText = (props) => {
+  return (
+      <EditableComponent config={TextEditConfig} {...props}>
+        <Text {...props} />
+      </EditableComponent>
+  );
+};
+
+export default MapTo("wknd-spa-react/components/text")(EditableText);

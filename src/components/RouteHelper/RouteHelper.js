@@ -40,14 +40,14 @@ export const withRoute = (WrappedComponent, extension) => {
 
       // Context path + route path + extension
       return (
-        <Route
-          key={routePath}
-          exact
-          path={'(.*)' + routePath + '(.' + extension + ')?'}
-          render={routeProps => {
-            return <WrappedComponent {...this.props} {...routeProps} />;
-          }}
-        />
+          <Route
+              key={routePath}
+              exact
+              path={'(.*)' + routePath + '(.' + extension + ')?'}
+              render={routeProps => {
+                return <WrappedComponent {...this.props} {...routeProps} />;
+              }}
+          />
       );
     }
   };

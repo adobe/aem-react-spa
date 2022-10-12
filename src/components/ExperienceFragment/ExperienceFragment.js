@@ -16,7 +16,6 @@
 
 import {
     MapTo,
-    withComponentMappingContext,
     Container
 } from '@adobe/aem-react-editable-components';
 
@@ -28,5 +27,4 @@ const ExperienceFragmentVariationConfig = {
     }
 };
 
-MapTo('wknd-spa-react/components/experiencefragment')(withComponentMappingContext(Container), ExperienceFragmentVariationConfig);
-
+MapTo('wknd-spa-react/components/experiencefragment')(Container, ExperienceFragmentVariationConfig);
