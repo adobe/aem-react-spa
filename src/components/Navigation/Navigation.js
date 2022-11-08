@@ -76,4 +76,4 @@ export default class Navigation extends Component {
   }
 }
 
-MapTo("wknd-spa-react/components/navigation")(Navigation, NavigationEditConfig);
+MapTo("testing-frontend-general/components/navigation")(Navigation, NavigationEditConfig);

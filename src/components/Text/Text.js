@@ -58,4 +58,4 @@ const EditableText = (props) => {
   );
 };
 
-export default MapTo("wknd-spa-react/components/text")(EditableText);
+export default MapTo("testing-frontend-general/components/text")(EditableText);

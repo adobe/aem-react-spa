@@ -23,6 +23,6 @@ const AppPage = (props) => {
   return <Page {...props} className={props.className || ` page` } />
 }
 
-export default MapTo('wknd-spa-react/components/page')(
+export default MapTo('testing-frontend-general/components/page')(
   withRoute(AppPage)
 );

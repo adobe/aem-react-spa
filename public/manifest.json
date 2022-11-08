@@ -18,7 +18,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/content/wknd-spa-react/us/en/home.html",
+  "start_url": "/content/testing-frontend-general/us/en.html",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
