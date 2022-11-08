@@ -8,9 +8,19 @@ process.env.NODE_ENV = 'production';
 require('react-scripts/config/env');
 
 // require the original webpack config factory
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpackConfigFactory = require('react-scripts/config/webpack.config');
 const webpackConfigPatch = (webpackEnv, webpackConfig) => {
-    // TODO: patch webpack configuration
+    // adjust file names
+    webpackConfig.optimization.splitChunks.name = true;
+    webpackConfig.optimization.runtimeChunk.name = 'bundle';
+    webpackConfig.output.chunkFilename = 'static/js/[name].chunk.js';
+    webpackConfig.output.filename = 'static/js/[name].js';
+    
+    const cssPlugin = webpackConfig.plugins.find(plugin => plugin instanceof MiniCssExtractPlugin);
+    cssPlugin.options.chunkFilename = 'static/css/[name].chunk.css';
+    cssPlugin.options.filename = "static/css/[name].css";
+
     return webpackConfig;
 }
 
