@@ -25,4 +25,4 @@ const ContainerConfig = {
 };
 
 
-MapTo('testing-frontend-general/components/container')(Container, ContainerConfig);
+MapTo('aem-react-spa/components/container')(Container, ContainerConfig);

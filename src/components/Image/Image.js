@@ -55,4 +55,4 @@ const EditableImage = (props) => {
 MapTo("foundation/components/image")(EditableImage)
 MapTo("wcm/foundation/components/image")(EditableImage)
 
-export default MapTo("testing-frontend-general/components/image")(EditableImage);
+export default MapTo("aem-react-spa/components/image")(EditableImage);

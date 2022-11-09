@@ -76,4 +76,4 @@ export default class Navigation extends Component {
   }
 }
 
-MapTo("testing-frontend-general/components/navigation")(Navigation, NavigationEditConfig);
+MapTo("aem-react-spa/components/navigation")(Navigation, NavigationEditConfig);

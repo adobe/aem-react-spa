@@ -1,13 +1,13 @@
 {
-  "name": "wknd-spa-react",
-  "version": "0.1.0",
+  "name": "aem-react-spa",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
     "build": "node ./scripts/build.js",
+    "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "sync": "aemsync -d -w ../ui.apps/src/main/content"
+    "postinstall": "node ./scripts/post-install.js"
   },
   "dependencies": {
     "@adobe/aem-react-editable-components": "^2.0.3",
