@@ -8,32 +8,36 @@
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
+ *
  */
 
-/* Global styles */
+ @import './grid';
 
-html,
-body {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-body {
-  background-color: #ffffff;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-p,
-.nav-container,
-.rw-box {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  color: #000000;
-}
+ .aem-GridColumn {
+     padding: 0 1rem;
+ }
+ 
+ .responsivegrid.aem-GridColumn {
+     padding-left: 0;
+     padding-right: 0;
+ }
+ 
+ $max_col: 12;
+ 
+ //Layout
+ $max-width: 1024px;
+ 
+ // Breakpoints
+ $mobile-breakpoint: 768px;
+ 
+ // Default breakpoint
+ .aem-Grid {
+     @include generate-grid(default, $max_col);
+ }
+ 
+ // Phone breakpoint
+ @media (max-width: $mobile-breakpoint) {
+     .aem-Grid {
+         @include generate-grid(phone, $max_col);
+     }
+ }
