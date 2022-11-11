@@ -29,7 +29,6 @@ export class Navigation extends Component {
   baseCss = 'navigation';
 
   renderGroupNav(children) {
-
     if(children === null || children.length < 1 ) {
       return null;
     }
@@ -64,7 +63,7 @@ export class Navigation extends Component {
     return !NavigationEditConfig.isEmpty(this.props) 
       ? (
         <nav className="navigation">
-          { this.renderGroupNav(this.props.model?.items) }
+          { this.renderGroupNav(this.props.items) }
         </nav>
       )
       : <></>
