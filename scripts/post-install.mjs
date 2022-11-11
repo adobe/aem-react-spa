@@ -20,10 +20,12 @@ async function replaceInFiles(searchString, replacement, files) {
     return Promise.all(files.map(async file => {
         const stats = await fs.stat(file);
         if (stats.isFile()) {
-            let content = await fs.readFile(file, { encoding: 'utf-8' });
-            content = content.replaceAll(searchString, replacement);
-            console.log(chalk.greenBright(`... writing ${file}`));
-            await fs.writeFile(file, content, { encoding: 'utf-8' });
+            const content = await fs.readFile(file, { encoding: 'utf-8' });
+            const newContent = content.replaceAll(searchString, replacement);
+            if (content !== newContent) {
+                console.log(chalk.greenBright(`... writing ${file}`));
+                await fs.writeFile(file, newContent, { encoding: 'utf-8' });
+            }
         } else if (stats.isDirectory()) {
             const contents = await fs.readdir(file);
             await replaceInFiles(searchString, replacement, contents.map(child => `${file}/${child}`));
@@ -63,10 +65,7 @@ async function main() {
 
     try {
         console.log();
-        await Promise.all([
-            replaceInFiles('aem-react-spa', appId, ['src', '.env', 'package.json', 'package-lock.json']),
-            replaceInFiles('package-lock.json', '', ['.gitignore'])
-        ])
+        await replaceInFiles('aem-react-spa', appId, ['src', '.env', 'package.json', 'package-lock.json']);
         console.log();
         console.log(chalk.green('Successfully initialised template 👏'));
 
