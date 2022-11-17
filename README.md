@@ -70,4 +70,11 @@ It is important that the output of the `npm run build` command is not modified. 
 
 ### Deployment
 
-TODO
+The advantage of using the decoupled frontend module with `aem-react-spa` is that the front-end code can be deployed with AEM's front-end pipeline. This greatly reduces deployment times. To find out more about the front-end pipeline, [refer to this article](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/implementing/using-cloud-manager/cicd-pipelines/introduction-ci-cd-pipelines.html?lang=en#front-end).
+
+The general high-level steps to deploy the project to AEMaaCS are outlined below:
+
+1. In cloud manager, under "Repositories", create a repository for both the AEM archetype code you generated from the archetype and for the front-end code.
+2. In cloud manager, under "Pipelines", create a full-stack deployment pipeline and deploy the code you generated from the archetype, using the repository created in the previous step.
+3. Create a second pipeline, selecting front-end instead of full-stack this time. Deploy the front-end code repository to this pipeline.
+4. Once the deploy is completed, access your AEM author instance. Select the correct front-end module in the front-end panel. Open your page in the editor and verify that it behaves as expected.
