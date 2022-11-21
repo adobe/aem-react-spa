@@ -10,19 +10,32 @@
  * governing permissions and limitations under the License.
  */
 
-import {
-  MapTo,
-  Page,
-} from '@adobe/aem-react-editable-components';
-import { withRoute } from '../RouteHelper/RouteHelper';
-import React from 'react';
-
-require('./Page.css');
-
-const AppPage = (props) => {
-  return <Page {...props} className={props.className || ` page` } />
+/* Global styles */
+html,
+body {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
-export default MapTo('aem-react-spa/components/page')(
-  withRoute(AppPage)
-);
+body {
+  background-color: #ffffff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+.nav-container,
+.rw-box {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  color: #000000;
+}
+
+/* Grid styles */
+@import "./grid-init";

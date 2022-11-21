@@ -25,4 +25,4 @@ const ContainerConfig = {
 };
 
 
-MapTo('wknd-spa-react/components/container')(Container, ContainerConfig);
+MapTo('aem-react-spa/components/container')(Container, ContainerConfig);

@@ -11,11 +11,10 @@
  */
 
 import React, {Component} from 'react';
-import {MapTo} from '@adobe/aem-react-editable-components';
+import {MapTo,EditableComponent} from '@adobe/aem-react-editable-components';
 import {Link} from "react-router-dom";
 
 const NavigationEditConfig = {
-
   emptyLabel: 'Navigation',
   isEmpty: function(props) {
     return !props || !props.items || props.items.length < 1;
@@ -25,12 +24,11 @@ const NavigationEditConfig = {
 /**
  * Navigation Class
  */
-export default class Navigation extends Component {
+export class Navigation extends Component {
 
-  baseCss = 'Navigation';
+  baseCss = 'navigation';
 
   renderGroupNav(children) {
-
     if(children === null || children.length < 1 ) {
       return null;
     }
@@ -62,18 +60,22 @@ export default class Navigation extends Component {
   }
 
   render() {
-    console.log(this.props)
-    if(NavigationEditConfig.isEmpty(this.props.model)) {
-      console.log('here')
-      return <div>Null</div>;
-    }
-
-    return (
-      <nav className="Navigation">
-        { this.renderGroupNav(this.props.model?.items) }
-      </nav>
-    );
+    return !NavigationEditConfig.isEmpty(this.props) 
+      ? (
+        <nav className="navigation">
+          { this.renderGroupNav(this.props.items) }
+        </nav>
+      )
+      : <></>
   }
 }
 
-MapTo("wknd-spa-react/components/navigation")(Navigation, NavigationEditConfig);
+const EditableNavigation = (props) => {
+  return (
+      <EditableComponent config={NavigationEditConfig} {...props}>
+        <Navigation {...props} />
+      </EditableComponent>
+  );
+};
+
+export default MapTo("aem-react-spa/components/navigation")(EditableNavigation);

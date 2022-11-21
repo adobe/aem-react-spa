@@ -1,7 +1,4 @@
-.env
-.env.development
-.env.development.decoupled
 node_modules
 target
-build
+dist
 node

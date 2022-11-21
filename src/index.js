@@ -22,7 +22,7 @@ import { Router } from 'react-router-dom';
 import App from './App';
 import LocalDevModelClient from './LocalDevModelClient';
 import './components/import-components';
-import './index.css';
+import './styles/index.scss';
 
 const modelManagerOptions = {};
 if(process.env.REACT_APP_PROXY_ENABLED) {

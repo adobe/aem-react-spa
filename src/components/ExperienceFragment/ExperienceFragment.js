@@ -23,4 +23,4 @@ const ExperienceFragmentVariationConfig = {
     }
 };
 
-MapTo('wknd-spa-react/components/experiencefragment')(Container, ExperienceFragmentVariationConfig);
+MapTo('aem-react-spa/components/experiencefragment')(Container, ExperienceFragmentVariationConfig);
